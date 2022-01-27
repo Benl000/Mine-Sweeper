@@ -1,0 +1,93 @@
+body{
+    text-align: center;
+    background-color: black;
+}
+
+table{
+    margin: auto;
+    margin-top: 10px;
+    border: rgb(200, 200, 200) ridge 10px;
+    background-color: rgb(44, 44, 44);
+}
+
+.cell{
+    border: rgb(200, 200, 200) 10px outset;
+    background-color: rgb(170, 170, 170);
+    width: 50px;
+    height: 50px;
+    font-size: 200%;
+    cursor: pointer;
+}
+
+.cell:hover{
+    border: rgb(170, 170, 170) 10px outset;
+    background-color: rgb(151, 150, 150);
+}
+
+.clicked{
+    background-color: rgb(155, 155, 155);
+    border: rgb(192, 192, 192) 10px inset;
+    width:50px;
+    height: 50px;
+    cursor: default;
+}
+
+.clicked:hover{
+    background-color: rgb(170, 170, 170);
+    border: rgb(192, 192, 192) 10px inset;
+}
+
+.header{
+    margin: auto;
+    margin-top: 30px;
+    border: rgb(200, 200, 200) ridge 10px;
+    background-color: rgb(170, 170, 170);
+    width: 600px;
+    height: 50px;
+}
+
+.level{
+    padding: 10px;
+    margin-top: 4px;
+    margin-left: 0px;
+    border: rgb(200, 200, 200) outset 4px; 
+    width: 100px;
+    background-color: rgb(192, 192, 192);
+    font-weight: bold;
+}
+
+button:hover{
+    border: rgb(170, 170, 170) 4px outset;
+    background-color: rgb(151, 150, 150);
+    cursor: pointer;
+}
+
+button:active{
+    border: rgb(170, 170, 170) 4px inset;
+    background-color: rgb(151, 150, 150);
+}
+
+.restart{
+    
+    margin-left: 238px;
+    border: rgb(200, 200, 200) outset 4px; 
+    width: 100px;
+    background-color: rgb(192, 192, 192);
+    width: 40px;
+    height: 40px;
+}
+
+.timer{
+    padding: 8px;
+    margin-left: 424px;
+    margin-top: -43px;
+    border: rgb(200, 200, 200) ridge 4px; 
+    width: 100px;
+    background-color: rgb(192, 192, 192);
+    color: rgb(102, 32, 32);
+}
+
+.msg{
+    margin-top: 10px;
+    color: white;
+}

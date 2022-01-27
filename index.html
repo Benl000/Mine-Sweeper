@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mine Sweeper</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body onload="init()">
+    <div class="header">
+        <div class="buttons">
+            <button class="level" onclick="changBoard('Beginner')">Beginner</button>
+            <button class="level" onclick="changBoard('Medium')">Medium</button>
+            <button class="level" onclick="changBoard('Expert')">Expert</button>
+            <button class="restart" onclick="restart()">😀</button>
+            <div class="timer">TIME</div>
+        </div>
+    </div>
+    <div class="msg">GOOD LUCK!</div>
+    <div class="boardArea" oncontextmenu="return false">Board area</div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

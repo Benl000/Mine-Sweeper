@@ -3,6 +3,10 @@
 var gBoard;
 const MINE = '💣';
 const MARKED = '🚩';
+var elMsg = document.querySelector('.msg');
+var gElTimer = document.querySelector('.timer');
+var gElRestart = document.querySelector('.restart');
+var gIntervalId;
 
 var gGame = {
     isOn: false,
@@ -16,10 +20,6 @@ var gLevel = {
     SIZE: 8,
     MINES: 12
 };
-
-var elMsg = document.querySelector('.msg');
-var gElTimer = document.querySelector('.timer');
-var gIntervalId;
 
 function init() {
     gGame.secsPassed = 0;
@@ -93,16 +93,18 @@ function cellClicked(elCell, rowIdx, colIdx) {
     if (currCell.isMarked) return;
     var cellSymbol = (currCell.isMine) ? cellSymbol = MINE : currCell.minesAroundCount;
     elCell.innerText = cellSymbol;
+    if (currCell.isShown) return
     currCell.isShown = true;
     elCell.classList.add("clicked");
-    gGame.shownCount++
+    gGame.shownCount++;
+    console.log(gGame.shownCount);
     if (currCell.isMine) {
         elCell.style.backgroundColor = 'rgb(126, 0, 0)';
         gameOver();
     } else if (currCell.minesAroundCount === 0) {
         expandShown(gBoard, rowIdx, colIdx);
     }
-    if (gGame.shownCount+gGame.markedCount===gLevel.SIZE**2) gameWon() 
+    if ((gGame.shownCount + gGame.markedCount === gLevel.SIZE ** 2) && (gGame.markedCount === gLevel.MINES)) gameWon();
 }
 
 function expandShown(gBoard, rowIdx, colIdx) {
@@ -123,6 +125,7 @@ function expandShown(gBoard, rowIdx, colIdx) {
 
 function gameOver() {
     gGame.isOn = false;
+    gElRestart.innerText='😩'
     elMsg.innerText = 'GAME OVER!';
     elMsg.style.color = 'red';
     for (var i = 0; i < gBoard.length; i++) {
@@ -171,16 +174,16 @@ function cellMarked(ev) {
             var currCell = gBoard[cellRow][cellCol];
             if (ev.path[0].innerText === '') {
                 ev.path[0].innerText = MARKED;
-                currCell.isMarked = false;
+                currCell.isMarked = true;
                 gGame.markedCount++;
             } else {
                 ev.path[0].innerText = '';
-                currCell.isMarked = true;
+                currCell.isMarked = false;
                 gGame.markedCount--;
             }
         }
     }
-    if (gGame.shownCount+gGame.markedCount===gLevel.SIZE**2) gameWon() 
+    if ((gGame.shownCount + gGame.markedCount === gLevel.SIZE ** 2) && (gGame.markedCount === gLevel.MINES)) gameWon();
 }
 
 function changBoard(difficulty) {
@@ -206,6 +209,8 @@ function startTimer() {
 }
 
 function restart() {
+    clearInterval(gIntervalId);
+    gElRestart.innerText='😀'
     elMsg.style.color = 'white';
     elMsg.innerText = 'GOOD LUCK!';
     gGame.isOn = false;
@@ -218,6 +223,7 @@ function restart() {
 
 function gameWon() {
     gGame.isOn = false;
+    gElRestart.innerText='😎'
     elMsg.innerText = 'AWESOME!';
     elMsg.style.color = 'greenyellow';
     clearInterval(gIntervalId);

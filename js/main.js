@@ -85,19 +85,22 @@ function setMinesNegsCount(rowIdx, colIdx) {
 function cellClicked(elCell, rowIdx, colIdx) {
     if (gGame.firstClick) {
         startTimer();
-        gGame.firstClick = false;
         gGame.isOn = true;
     }
     if (!gGame.isOn) return;
     var currCell = gBoard[rowIdx][colIdx];
+    if ((gGame.firstClick) && (currCell.isMine)) {
+        restart();
+        return
+    }
+    if (gGame.firstClick) gGame.firstClick = false;
     if (currCell.isMarked) return;
-    var cellSymbol = (currCell.isMine) ? cellSymbol = MINE : currCell.minesAroundCount;
-    elCell.innerText = cellSymbol;
-    if (currCell.isShown) return
+    var cellSymbol = (currCell.isMine) ? MINE : `<img src="img/Minesweeper_${currCell.minesAroundCount}.png">`;
+    elCell.innerHTML = cellSymbol;
+    if (currCell.isShown) return;
     currCell.isShown = true;
     elCell.classList.add("clicked");
     gGame.shownCount++;
-    console.log(gGame.shownCount);
     if (currCell.isMine) {
         elCell.style.backgroundColor = 'rgb(126, 0, 0)';
         gameOver();
@@ -125,7 +128,7 @@ function expandShown(gBoard, rowIdx, colIdx) {
 
 function gameOver() {
     gGame.isOn = false;
-    gElRestart.innerText='😩'
+    gElRestart.innerText = '😩';
     elMsg.innerText = 'GAME OVER!';
     elMsg.style.color = 'red';
     for (var i = 0; i < gBoard.length; i++) {
@@ -160,7 +163,7 @@ function getRandomInt(min, max) {
 }
 
 function cellMarked(ev) {
-    if (gGame.firstClick) {
+    if ((gGame.firstClick)&&(ev.button === 2)) {
         startTimer();
         gGame.firstClick = false;
         gGame.isOn = true;
@@ -210,7 +213,7 @@ function startTimer() {
 
 function restart() {
     clearInterval(gIntervalId);
-    gElRestart.innerText='😀'
+    gElRestart.innerText = '😀';
     elMsg.style.color = 'white';
     elMsg.innerText = 'GOOD LUCK!';
     gGame.isOn = false;
@@ -223,7 +226,7 @@ function restart() {
 
 function gameWon() {
     gGame.isOn = false;
-    gElRestart.innerText='😎'
+    gElRestart.innerText = '😎';
     elMsg.innerText = 'AWESOME!';
     elMsg.style.color = 'greenyellow';
     clearInterval(gIntervalId);

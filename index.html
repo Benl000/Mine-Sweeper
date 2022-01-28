@@ -15,12 +15,23 @@
             <button class="level" onclick="changBoard('Beginner')">Beginner</button>
             <button class="level" onclick="changBoard('Medium')">Medium</button>
             <button class="level" onclick="changBoard('Expert')">Expert</button>
-            <button class="restart" onclick="restart()"><span>😀</span></button>
+            <button class="restart" onclick="restart()">😀</button>
             <div class="timer">TIME</div>
+            <div class="miniBtnHead">
+                <button class="miniBtn" onclick="lives()">❤️</button>
+                <button class="miniBtn" onclick="hint()">💡</button>
+                <button class="miniBtn" onclick="safeClick()">🛡️</button>
+                <div class="count">
+                    <a class="lives">3</a>
+                    <a class="hintcounter">3</a>
+                    <a class="safeClick">3</a>
+                </div>
+            </div>
         </div>
     </div>
     <div class="msg">GOOD LUCK!</div>
     <div class="boardArea" oncontextmenu="return false">Board area</div>
+    <div class="scores"></div>
     <script src="js/main.js"></script>
 </body>
 

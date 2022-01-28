@@ -68,9 +68,8 @@ button:active{
 }
 
 .restart{
-    margin-left: 238px;
+    margin-left: 240px;
     border: rgb(200, 200, 200) outset 4px; 
-    width: 100px;
     background-color: rgb(192, 192, 192);
     width: 40px;
     height: 40px;
@@ -78,10 +77,10 @@ button:active{
 
 .timer{
     padding: 8px;
-    margin-left: 424px;
+    margin-left: 447px;
     margin-top: -43px;
     border: rgb(200, 200, 200) ridge 4px; 
-    width: 100px;
+    width: 80px;
     background-color: rgb(192, 192, 192);
     color: rgb(102, 32, 32);
 }
@@ -89,4 +88,35 @@ button:active{
 .msg{
     margin-top: 10px;
     color: white;
+}
+
+.miniBtn{
+    border: rgb(200, 200, 200) outset 4px; 
+    width: 40px;
+    background-color: rgb(192, 192, 192);
+}
+
+.miniBtnHead{
+    margin-top: -41px;
+    margin-left: 161px;
+}
+
+.count{
+    margin-left: -33px;
+}
+
+a{
+    height: 20px;
+    margin-left: 32px;
+}
+
+.scores{
+    margin: auto;
+    display: none;
+    margin-top: 10px;
+    /* margin-left: 900px; */
+    border: rgb(200, 200, 200) ridge 10px;
+    background-color: rgb(170, 170, 170);
+    width: 110px;
+    height: 50px;
 }

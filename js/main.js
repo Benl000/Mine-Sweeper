@@ -58,7 +58,7 @@ function renderBoard(gBoard) {
             var currCell = gBoard[i][j];
             currCell.minesAroundCount = setMinesNegsCount(i, j);
             var cellId = `${i} x ${j}`;
-            strHTML += `<td class="cell" id="${cellId}" onmousedown="cellMarked(event)" onclick="cellClicked(this,${i}, ${j})"></td>`;
+            strHTML += `<td class="cell" id="${cellId}" data-column="${i}" data-row="${j}" onmousedown="cellMarked(event)" onclick="cellClicked(this,${i}, ${j})"></td>`;
         }
         strHTML += '</tr>';
     }
@@ -190,17 +190,18 @@ function cellMarked(ev) {
     }
     if (!gGame.isOn) return;
     if (ev.button === 2) {
-        if (ev.path[0].classList.contains("clicked")) return;
+        var elCurrCel = document.getElementById(ev.target.id);
+        if (elCurrCel.classList.contains("clicked")) return;
         else {
-            var cellRow = +ev.path[0].id[0];
-            var cellCol = +ev.path[0].id[4];
+            var cellRow = +ev.target.dataset.row;
+            var cellCol = +ev.target.dataset.column;
             var currCell = gBoard[cellRow][cellCol];
-            if (ev.path[0].innerText === '') {
-                ev.path[0].innerText = MARKED;
+            if (elCurrCel.innerText === '') {
+                elCurrCel.innerText = MARKED;
                 currCell.isMarked = true;
                 gGame.markedCount++;
             } else {
-                ev.path[0].innerText = '';
+                elCurrCel.innerText = '';
                 currCell.isMarked = false;
                 gGame.markedCount--;
             }

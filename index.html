@@ -12,15 +12,15 @@
 <body onload="init()">
     <div class="header">
         <div class="buttons">
-            <button class="level" onclick="changBoard('Beginner')">Beginner</button>
-            <button class="level" onclick="changBoard('Medium')">Medium</button>
-            <button class="level" onclick="changBoard('Expert')">Expert</button>
+            <button class="level" title="4 x 4" onclick="changBoard('Beginner')">Beginner</button>
+            <button class="level" title="8 x 8" onclick="changBoard('Medium')">Medium</button>
+            <button class="level" title="12 x 12" onclick="changBoard('Expert')">Expert</button>
             <button class="restart" onclick="restart()">😀</button>
             <div class="timer">TIME</div>
             <div class="miniBtnHead">
-                <button class="miniBtn" onclick="lives()">❤️</button>
-                <button class="miniBtn" onclick="hint()">💡</button>
-                <button class="miniBtn" onclick="safeClick()">🛡️</button>
+                <button class="miniBtn" title="Hearts left" onclick="lives()">❤️</button>
+                <button class="miniBtn" title="Hint" onclick="hint()">💡</button>
+                <button class="miniBtn" title="Safe click" onclick="safeClick()">🛡️</button>
                 <div class="count">
                     <a class="lives">3</a>
                     <a class="hintcounter">3</a>
